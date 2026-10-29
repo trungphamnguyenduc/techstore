@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - Siêu Thị Công Nghệ ASM Final WEB2053</title>
+    
+    <!-- Tailwind CSS qua CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- DEMO GOOGLE ANALYTICS CODE (Mục 6) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DEMO123456"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DEMO123456');
+    </script>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans flex flex-col min-h-screen">
+
+    <!-- TOPBAR THÔNG BÁO -->
+    <div class="bg-slate-900 text-slate-300 text-xs py-1.5 px-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <span><i class="fa-solid fa-phone text-amber-400 mr-1"></i> Hotline: 1900 1234</span>
+                <span class="hidden sm:inline"><i class="fa-solid fa-envelope text-amber-400 mr-1"></i> support@techstore.vn</span>
+            </div>
+            <div>
+                <span class="bg-blue-600 text-white px-2 py-0.5 rounded font-bold">WEB2053 ASM FINAL</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER / NAVIGATION MENU -->
+    <header class="bg-blue-700 text-white shadow-md sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- LOGO -->
+            <div class="flex items-center space-x-2 cursor-pointer" onclick="switchView('client')">
+                <i class="fa-solid fa-laptop-code text-3xl text-amber-400"></i>
+                <div class="leading-tight">
+                    <span class="text-xl font-extrabold tracking-wide block">TechStore</span>
+                    <span class="text-[10px] text-blue-200 tracking-wider">AI MARKETING STORE</span>
+                </div>
+            </div>
+
+            <!-- MENU DESKTOP -->
+            <nav class="hidden lg:flex space-x-6 font-medium text-sm items-center">
+                <button onclick="switchView('client')" class="hover:text-amber-300 transition flex items-center"><i class="fa-solid fa-house mr-1.5"></i>Trang chủ</button>
+                <a href="#categories" onclick="switchView('client')" class="hover:text-amber-300 transition flex items-center"><i class="fa-solid fa-layer-group mr-1.5"></i>5 Danh mục</a>
+                <a href="#products" onclick="switchView('client')" class="hover:text-amber-300 transition flex items-center"><i class="fa-solid fa-boxes-stacked mr-1.5"></i>20 Sản phẩm</a>
+                <a href="#footer" onclick="switchView('client')" class="hover:text-amber-300 transition flex items-center"><i class="fa-solid fa-headset mr-1.5"></i>Liên hệ</a>
+            </nav>
+
+            <!-- NÚT TRANG ADMIN & HAMBURGER MOBILE -->
+            <div class="flex items-center space-x-2">
+                <button onclick="switchView('admin')" class="bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold px-3 py-1.5 rounded-lg shadow text-xs sm:text-sm transition flex items-center">
+                    <i class="fa-solid fa-user-gear mr-1.5"></i><span class="hidden sm:inline">Trang </span>Admin SEO (Mục 2)
+                </button>
+
+                <!-- TOGGLE MOBILE MENU -->
+                <button onclick="toggleMobileMenu()" class="lg:hidden text-white p-2 text-xl focus:outline-none">
+                    <i class="fa-solid fa-bars" id="menuIcon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- MENU MOBILE DROPDOWN -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-blue-800 border-t border-blue-600 px-4 py-3 space-y-3 text-sm font-medium">
+            <button onclick="switchView('client'); toggleMobileMenu();" class="block w-full text-left py-1 hover:text-amber-300"><i class="fa-solid fa-house mr-2"></i>Trang chủ</button>
+            <a href="#categories" onclick="switchView('client'); toggleMobileMenu();" class="block py-1 hover:text-amber-300"><i class="fa-solid fa-layer-group mr-2"></i>5 Danh mục</a>
+            <a href="#products" onclick="switchView('client'); toggleMobileMenu();" class="block py-1 hover:text-amber-300"><i class="fa-solid fa-boxes-stacked mr-2"></i>20 Sản phẩm</a>
+            <a href="#footer" onclick="switchView('client'); toggleMobileMenu();" class="block py-1 hover:text-amber-300"><i class="fa-solid fa-headset mr-2"></i>Chân trang & Liên hệ</a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT (CLIENT SIDE - MỤC 1) -->
+    <main id="clientView" class="max-w-7xl mx-auto px-4 py-6 flex-grow w-full">
+        
+        <!-- BANNER BỎNG BẤY & TÌM KIẾM -->
+        <section class="bg-gradient-to-r from-blue-700 to-indigo-800 text-white rounded-2xl p-6 sm:p-8 mb-8 shadow-lg relative overflow-hidden">
+            <div class="relative z-10 max-w-2xl">
+                <span class="bg-amber-400 text-slate-900 text-[11px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Môn Marketing trên Internet với AI</span>
+                <h1 class="text-2xl sm:text-4xl font-extrabold mt-3 leading-tight">Siêu Thị Máy Tính & Thiết Bị Công Nghệ</h1>
+                <p class="mt-2 text-blue-100 text-xs sm:text-sm">Hệ thống sản phẩm thử nghiệm tích hợp Tối ưu SEO, Google Analytics, Pixel Tracking & Email Marketing.</p>
+                
+                <!-- BỘ TÌM KIẾM SẢN PHẨM -->
+                <div class="mt-6 flex flex-col sm:flex-row gap-2">
+                    <div class="relative flex-grow">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-sm"></i>
+                        <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="Tìm kiếm sản phẩm theo tên..." class="w-full pl-10 pr-4 py-2.5 rounded-xl text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 shadow">
+                    </div>
+                    <select id="categoryFilter" onchange="filterProducts()" class="py-2.5 px-3 rounded-xl text-slate-800 text-sm bg-white font-medium shadow focus:outline-none">
+                        <option value="0">Tất cả danh mục</option>
+                        <!-- JS render options -->
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- MỤC 1: SHOW 5 DANH MỤC -->
+        <section id="categories" class="mb-10">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg sm:text-xl font-bold text-slate-800 flex items-center">
+                    <span class="bg-blue-600 text-white w-6 h-6 rounded-full inline-flex items-center justify-center mr-2 text-xs">5</span>
+                    5 Danh Mục Sản Phẩm (Mục 1)
+                </h2>
+            </div>
+            <!-- Grid 2 cột trên điện thoại, 5 cột trên PC -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4" id="categoryContainer">
+                <!-- JS Render 5 Danh Mục -->
+            </div>
+        </section>
+
+        <!-- MỤC 1: SHOW 20 SẢN PHẨM + PHÂN TRANG -->
+        <section id="products" class="mb-12">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
+                <h2 class="text-lg sm:text-xl font-bold text-slate-800 flex items-center">
+                    <span class="bg-blue-600 text-white w-6 h-6 rounded-full inline-flex items-center justify-center mr-2 text-xs">20</span>
+                    Danh Sách Sản Phẩm (Mục 1)
+                </h2>
+                <span class="text-xs bg-white border border-slate-300 text-slate-600 px-3 py-1 rounded-full font-medium self-start sm:self-auto" id="productCountText">
+                    Đang hiển thị...
+                </span>
+            </div>
+
+            <!-- Grid 1 cột trên ĐT nhỏ, 2 cột trên ĐT to, 4 cột trên PC -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6" id="productContainer">
+                <!-- JS Render Sản Phẩm -->
+            </div>
+
+            <!-- THANH PHÂN TRANG (PAGINATION) -->
+            <div class="mt-8 flex justify-center items-center space-x-2" id="pagination">
+                <!-- JS Render Nút Phân Trang -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- MAIN CONTENT (ADMIN SIDE - MỤC 2) -->
+    <main id="adminView" class="max-w-7xl mx-auto px-4 py-6 hidden flex-grow w-full">
+        <div class="bg-white rounded-xl shadow-md p-4 sm:p-6 border border-slate-200">
+            <div class="border-b pb-4 mb-6 flex flex-col sm:flex-row justify-between sm:items-center gap-4">
+                <div>
+                    <h1 class="text-xl sm:text-2xl font-bold text-slate-800"><i class="fa-solid fa-sliders text-blue-600 mr-2"></i>Bảng Cấu Hình Admin & Tối Ưu SEO</h1>
+                    <p class="text-slate-500 text-xs sm:text-sm">Trình bày thao tác Quản trị SEO & Hệ thống theo yêu cầu Mục 2</p>
+                </div>
+                <button onclick="switchView('client')" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-4 py-2 rounded-lg text-xs sm:text-sm font-medium self-start sm:self-auto">
+                    <i class="fa-solid fa-arrow-left mr-1"></i> Quay lại Website
+                </button>
+            </div>
+
+            <!-- TỔNG HỢP CÁC MỤC ADMIN -->
+            <div class="space-y-6">
+                <!-- 2.1 CẤU HÌNH SEO SẢN PHẨM -->
+                <div class="bg-slate-50 p-4 sm:p-5 rounded-xl border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-base sm:text-lg text-blue-800 mb-3 flex items-center"><i class="fa-solid fa-box mr-2"></i>1. Cấu hình SEO Sản Phẩm (Yoast SEO / Rank Math)</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Chọn sản phẩm tối ưu:</label>
+                            <select id="seoProductSelect" onchange="loadProductSEO()" class="w-full border rounded-lg p-2 text-xs sm:text-sm bg-white focus:ring-2 focus:ring-blue-500">
+                                <!-- JS fill 20 sản phẩm -->
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">SEO Title (Thẻ tiêu đề SEO):</label>
+                            <input type="text" id="seoProductTitle" class="w-full border rounded-lg p-2 text-xs sm:text-sm bg-white" readonly>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Meta Description (Thẻ mô tả tìm kiếm):</label>
+                            <textarea id="seoProductDesc" rows="2" class="w-full border rounded-lg p-2 text-xs sm:text-sm bg-white" readonly></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2.2 CẤU HÌNH SEO BÀI VIẾT -->
+                <div class="bg-slate-50 p-4 sm:p-5 rounded-xl border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-base sm:text-lg text-blue-800 mb-3 flex items-center"><i class="fa-solid fa-newspaper mr-2"></i>2. Cấu hình SEO Bài Viết Tin Tức</h3>
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Tiêu đề bài viết SEO mẫu:</label>
+                            <input type="text" value="Top 5 Laptop Gaming Đánh Giá Tốt Nhất Năm 2026" class="w-full border rounded-lg p-2 text-xs sm:text-sm bg-white" readonly>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Từ khóa chính (Focus Keyword):</label>
+                            <input type="text" value="laptop gaming gia re, laptop sinh vien, danh gia laptop" class="w-full border rounded-lg p-2 text-xs sm:text-sm bg-white" readonly>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2.3 TỐI ƯU SEO HỆ THỐNG -->
+                <div class="bg-slate-50 p-4 sm:p-5 rounded-xl border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-base sm:text-lg text-blue-800 mb-3 flex items-center"><i class="fa-solid fa-sitemap mr-2"></i>3. Tối Ưu SEO Hệ Thống (Global Settings)</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div class="p-3 bg-white rounded-lg border">
+                            <span class="text-xs text-slate-500 block">XML Sitemap Status:</span>
+                            <span class="font-bold text-green-600 text-xs sm:text-sm"><i class="fa-solid fa-circle-check mr-1"></i>/sitemap_index.xml</span>
+                        </div>
+                        <div class="p-3 bg-white rounded-lg border">
+                            <span class="text-xs text-slate-500 block">Robots.txt File:</span>
+                            <span class="font-bold text-green-600 text-xs sm:text-sm"><i class="fa-solid fa-circle-check mr-1"></i>User-agent: * Allow: /</span>
+                        </div>
+                        <div class="p-3 bg-white rounded-lg border">
+                            <span class="text-xs text-slate-500 block">Search Console Meta:</span>
+                            <span class="font-bold text-blue-600 text-xs sm:text-sm"><i class="fa-solid fa-code mr-1"></i>Google Verification Tag</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2.4 CẤU HÌNH PHÂN HỆ FACEBOOK -->
+                <div class="bg-slate-50 p-4 sm:p-5 rounded-xl border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-base sm:text-lg text-blue-800 mb-3 flex items-center"><i class="fa-brands fa-facebook mr-2"></i>4. Cấu Hình Facebook Phần Hệ Thống</h3>
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Meta Pixel ID (Facebook Pixel Tracking):</label>
+                            <input type="text" value="987654321012345" class="w-full border rounded-lg p-2 text-xs sm:text-sm font-mono bg-white" readonly>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Facebook Open Graph Meta Data:</label>
+                            <textarea rows="2" class="w-full border rounded-lg p-2 text-xs font-mono bg-white text-slate-600" readonly>&lt;meta property="og:title" content="TechStore - Laptop & Linh Kiện" /&gt;&#10;&lt;meta property="og:type" content="website" /&gt;</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER (CHÂN TRANG HOÀN CHỈNH) -->
+    <footer id="footer" class="bg-slate-900 text-slate-300 pt-10 pb-6 border-t-4 border-amber-400 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 text-xs sm:text-sm">
+            <!-- CỘT 1: THÔNG TIN THƯƠNG HIỆU -->
+            <div class="space-y-3">
+                <div class="flex items-center space-x-2 text-white">
+                    <i class="fa-solid fa-laptop-code text-2xl text-amber-400"></i>
+                    <span class="text-lg font-bold">TechStore AI</span>
+                </div>
+                <p class="text-slate-400 leading-relaxed">Chuyên cung cấp thiết bị máy tính, laptop văn phòng, laptop gaming chính hãng. Dự án phục vụ báo cáo ASM Final WEB2053.</p>
+                <div class="flex space-x-3 text-lg text-slate-400 pt-2">
+                    <a href="#" class="hover:text-amber-400"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="hover:text-amber-400"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="hover:text-amber-400"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <!-- CỘT 2: LIÊN KẾT NHANH -->
+            <div>
+                <h4 class="text-white font-bold text-sm sm:text-base mb-3 border-b border-slate-700 pb-1.5">Liên Kết Nhanh</h4>
+                <ul class="space-y-2 text-slate-400">
+                    <li><a href="#categories" onclick="switchView('client')" class="hover:text-amber-400 transition"><i class="fa-solid fa-angle-right mr-1 text-amber-400"></i>5 Danh mục sản phẩm</a></li>
+                    <li><a href="#products" onclick="switchView('client')" class="hover:text-amber-400 transition"><i class="fa-solid fa-angle-right mr-1 text-amber-400"></i>Danh sách 20 sản phẩm</a></li>
+                    <li><a href="javascript:void(0)" onclick="switchView('admin')" class="hover:text-amber-400 transition"><i class="fa-solid fa-angle-right mr-1 text-amber-400"></i>Quản trị SEO Admin</a></li>
+                </ul>
+            </div>
+
+            <!-- CỘT 3: CHÍNH SÁCH -->
+            <div>
+                <h4 class="text-white font-bold text-sm sm:text-base mb-3 border-b border-slate-700 pb-1.5">Chính Sách & Hỗ Trợ</h4>
+                <ul class="space-y-2 text-slate-400">
+                    <li><a href="#" class="hover:text-amber-400">Chính sách bảo hành 24 tháng</a></li>
+                    <li><a href="#" class="hover:text-amber-400">Chính sách đổi trả trong 30 ngày</a></li>
+                    <li><a href="#" class="hover:text-amber-400">Hướng dẫn mua hàng trả góp 0%</a></li>
+                </ul>
+            </div>
+
+            <!-- CỘT 4: THÔNG TIN LIÊN HỆ -->
+            <div>
+                <h4 class="text-white font-bold text-sm sm:text-base mb-3 border-b border-slate-700 pb-1.5">Thông Tin Liên Hệ</h4>
+                <ul class="space-y-2 text-slate-400">
+                    <li><i class="fa-solid fa-location-dot text-amber-400 mr-2"></i>Hòa Khánh, Quận Liên Chiểu, Đà Nẵng</li>
+                    <li><i class="fa-solid fa-phone text-amber-400 mr-2"></i>1900 1234 (8:00 - 21:00)</li>
+                    <li><i class="fa-solid fa-envelope text-amber-400 mr-2"></i>contact@techstore.vn</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 pt-4 border-t border-slate-800 text-center text-xs text-slate-500 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <p>© 2026 TechStore AI. Tất cả quyền được bảo lưu. Dự án môn Marketing trên Internet.</p>
+            <div class="flex space-x-3 text-lg text-slate-400">
+                <i class="fa-brands fa-cc-visa"></i>
+                <i class="fa-brands fa-cc-mastercard"></i>
+                <i class="fa-solid fa-wallet"></i>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL XEM CHI TIẾT SẢN PHẨM (MỤC 1) -->
+    <div id="productModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full p-5 sm:p-6 shadow-2xl relative overflow-hidden max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal()" class="absolute top-3 right-3 text-slate-400 hover:text-slate-600 text-xl font-bold w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center">
+                &times;
+            </button>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6" id="modalContent">
+                <!-- JS Fill dữ liệu -->
+            </div>
+        </div>
+    </div>
+
+    <!-- UTILITY FLOATING BUTTON (NÚT BACK TO TOP) -->
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-5 right-5 bg-blue-600 hover:bg-blue-700 text-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center z-30 transition">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- JAVASCRIPT XỬ LÝ TOÀN BỘ LOGIC -->
+    <script>
+        // 5 DANH MỤC (MỤC 1)
+        const categories = [
+            { id: 1, name: 'Laptop Gaming', icon: 'fa-gamepad' },
+            { id: 2, name: 'Laptop Văn Phòng', icon: 'fa-briefcase' },
+            { id: 3, name: 'Laptop Đồ Họa', icon: 'fa-pen-nib' },
+            { id: 4, name: 'Phụ Kiện Laptop', icon: 'fa-mouse' },
+            { id: 5, name: 'Linh Kiện Máy Tính', icon: 'fa-microchip' }
+        ];
+
+        // ĐỦ 20 SẢN PHẨM (MỤC 1)
+        const products = [
+            { id: 1, catId: 1, name: 'Asus ROG Strix G16', price: '35.990.000₫', img: 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=400', desc: 'Core i7 13700HX, RTX 4060 8GB, Màn 165Hz.', seoTitle: 'Asus ROG Strix G16 | Laptop Gaming RTX 4060 Giá Tốt', seoDesc: 'Mua Asus ROG Strix G16 chính hãng bảo hành 24 tháng.' },
+            { id: 2, catId: 1, name: 'MSI Katana 15 B13V', price: '24.990.000₫', img: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400', desc: 'Intel i5 13420H, RAM 16GB, RTX 3050.', seoTitle: 'MSI Katana 15 Chính Hãng - Giá Rẻ Nhất', seoDesc: 'MSI Katana 15 cấu hình mạnh mẽ trong tầm giá sinh viên.' },
+            { id: 3, catId: 1, name: 'Acer Nitro 16 Phoenix', price: '28.490.000₫', img: 'https://images.unsplash.com/photo-1544731612-de7f96afe55f?w=400', desc: 'Ryzen 7 7840HS, RTX 4050, tản nhiệt kim loại lỏng.', seoTitle: 'Acer Nitro 16 Phoenix Chuẩn SEO', seoDesc: 'Đánh giá Acer Nitro 16 Phoenix chi tiết giá ưu đãi.' },
+            { id: 4, catId: 1, name: 'Lenovo Legion Slim 5', price: '32.990.000₫', img: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400', desc: 'Vỏ nhôm cao cấp, Ryzen 7, Màn 2K 165Hz.', seoTitle: 'Lenovo Legion Slim 5 Mỏng Nhẹ', seoDesc: 'Mua Lenovo Legion Slim 5 nhận ngay quà tặng.' },
+            { id: 5, catId: 2, name: 'MacBook Air M2 256GB', price: '24.490.000₫', img: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400', desc: 'Chip Apple M2, Màn Retina 13.6 inch, Pin 18 tiếng.', seoTitle: 'MacBook Air M2 Apple VN/A', seoDesc: 'Sở hữu MacBook Air M2 mỏng nhẹ đẳng cấp.' },
+            { id: 6, catId: 2, name: 'Dell XPS 13 9315', price: '27.990.000₫', img: 'https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?w=400', desc: 'Laptop doanh nhân mỏng nhẹ, i5 1230U, RAM 16GB.', seoTitle: 'Dell XPS 13 9315 Sang Trọng', seoDesc: 'Dell XPS 13 giá ưu đãi cho dân văn phòng.' },
+            { id: 7, catId: 2, name: 'HP Pavilion 14', price: '15.490.000₫', img: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400', desc: 'Màn FHD IPS, Core i5 gen 13, Bàn phím gõ êm.', seoTitle: 'HP Pavilion 14 Giá Sinh Viên', seoDesc: 'Laptop HP Pavilion 14 mỏng nhẹ chính hãng.' },
+            { id: 8, catId: 2, name: 'Asus ZenBook 14 OLED', price: '22.990.000₫', img: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400', desc: 'Màn hình OLED 2.8K rực rỡ, pin trâu 75Wh.', seoTitle: 'Asus ZenBook 14 OLED Màn Đẹp', seoDesc: 'Cấu hình chi tiết Asus ZenBook 14 OLED.' },
+            { id: 9, catId: 3, name: 'MacBook Pro 14 M3', price: '39.990.000₫', img: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400', desc: 'Chip M3 Pro tối ưu đồ họa, dựng phim 4K mượt mà.', seoTitle: 'MacBook Pro 14 M3 Cho Designer', seoDesc: 'MacBook Pro M3 hiệu năng render đỉnh cao.' },
+            { id: 10, catId: 3, name: 'Dell Precision 5570', price: '45.000.000₫', img: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400', desc: 'Máy trạm đồ họa chuyên nghiệp, RTX A1000.', seoTitle: 'Dell Precision 5570 Workstation', seoDesc: 'Trạm làm việc Dell Precision 5570 mạnh mẽ.' },
+            { id: 11, catId: 3, name: 'ASUS ProArt Studiobook', price: '49.990.000₫', img: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400', desc: 'Màn hình chuẩn màu DCI-P3 100%, núm Asus Dial.', seoTitle: 'ASUS ProArt Studiobook Đồ Họa', seoDesc: 'Laptop chuyên dụng thiết kế đồ họa cao cấp.' },
+            { id: 12, catId: 3, name: 'HP ZBook Power G9', price: '38.990.000₫', img: 'https://images.unsplash.com/photo-1544731612-de7f96afe55f?w=400', desc: 'Chuyên dụng kiến trúc, vẽ CAD và dựng hình 3D.', seoTitle: 'HP ZBook Power G9 Giá Tốt', seoDesc: 'HP ZBook G9 chuyên đồ họa kĩ thuật.' },
+            { id: 13, catId: 4, name: 'Chuột Logitech MX Master 3S', price: '2.490.000₫', img: 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=400', desc: 'Chuột không dây công thái học, cuộn Quiet Clicks.', seoTitle: 'Chuột Logitech MX Master 3S', seoDesc: 'Chuột văn phòng Logitech MX Master 3S chính hãng.' },
+            { id: 14, catId: 4, name: 'Bàn Phím Cơ Keychron K2 V2', price: '1.890.000₫', img: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400', desc: 'Bàn phím cơ Bluetooth, led RGB, gõ cực êm.', seoTitle: 'Bàn Phím Cơ Keychron K2 V2', seoDesc: 'Keychron K2 V2 chính hãng bảo hành 12 tháng.' },
+            { id: 15, catId: 4, name: 'Balo Laptop Mark Ryden', price: '550.000₫', img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400', desc: 'Balo chống nước cao cấp có cổng sạc USB.', seoTitle: 'Balo Laptop Chống Nước Mark Ryden', seoDesc: 'Balo đựng laptop 15.6 inch tiện lợi.' },
+            { id: 16, catId: 4, name: 'Giá Đỡ Laptop Tản Nhiệt Nhôm', price: '250.000₫', img: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400', desc: 'Chất liệu nhôm gấp gọn, nâng cao màn hình.', seoTitle: 'Giá Đỡ Laptop Nhôm Tản Nhiệt', seoDesc: 'Kệ đỡ laptop gấp gọn tiện lợi mang đi.' },
+            { id: 17, catId: 5, name: 'SSD Samsung 980 Pro 1TB', price: '2.850.000₫', img: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=400', desc: 'Tốc độ đọc 7000MB/s NVMe PCIe 4.0 siêu tốc.', seoTitle: 'SSD Samsung 980 Pro 1TB PCIe 4.0', seoDesc: 'Ổ cứng SSD NVMe Samsung chính hãng.' },
+            { id: 18, catId: 5, name: 'RAM Corsair Vengeance 16GB', price: '1.250.000₫', img: 'https://images.unsplash.com/photo-1562976540-1502c2145186?w=400', desc: 'DDR4 Bus 3200MHz nâng cấp mượt mà.', seoTitle: 'RAM Laptop Corsair Vengeance 16GB', seoDesc: 'RAM DDR4 16GB bus 3200 giá tốt.' },
+            { id: 19, catId: 5, name: 'Keo Tản Nhiệt Noctua NT-H1', price: '190.000₫', img: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400', desc: 'Giảm nhiệt độ CPU/GPU tức thì, độ bền 3 năm.', seoTitle: 'Keo Tản Nhiệt Noctua NT-H1', seoDesc: 'Keo tản nhiệt Noctua cho laptop gaming.' },
+            { id: 20, catId: 5, name: 'Củ Sạc GaN 65W Type-C', price: '450.000₫', img: 'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=400', desc: 'Sạc nhanh siêu nhỏ gọn cho MacBook và Laptop.', seoTitle: 'Sạc GaN 65W Nhỏ Gọn Cho Laptop', seoDesc: 'Củ sạc GaN 65W hỗ trợ chuẩn Power Delivery.' }
+        ];
+
+        // BIẾN QUẢN LÝ PHÂN TRANG & LỌC
+        let currentPage = 1;
+        const itemsPerPage = 8; // Hiển thị 8 sản phẩm/trang
+        let filteredProductsList = [...products];
+
+        // TOGGLE MOBILE MENU
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // RENDER 5 DANH MỤC
+        function renderCategories() {
+            const container = document.getElementById('categoryContainer');
+            const selectFilter = document.getElementById('categoryFilter');
+
+            container.innerHTML = categories.map(c => `
+                <div onclick="filterByCategory(${c.id})" class="bg-white p-3 sm:p-4 rounded-xl shadow-sm border border-slate-200 hover:border-blue-500 hover:shadow-md transition text-center cursor-pointer">
+                    <i class="fa-solid ${c.icon} text-xl sm:text-2xl text-blue-600 mb-1.5"></i>
+                    <h3 class="font-bold text-xs sm:text-sm text-slate-800">${c.name}</h3>
+                </div>
+            `).join('');
+
+            selectFilter.innerHTML += categories.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+        }
+
+        // LỌC SẢN PHẨM THEO TỪ KHÓA & DANH MỤC
+        function filterProducts() {
+            const searchKeyword = document.getElementById('searchInput').value.toLowerCase();
+            const catId = parseInt(document.getElementById('categoryFilter').value);
+
+            filteredProductsList = products.filter(p => {
+                const matchName = p.name.toLowerCase().includes(searchKeyword);
+                const matchCat = (catId === 0) || (p.catId === catId);
+                return matchName && matchCat;
+            });
+
+            currentPage = 1; // Reset về trang 1
+            renderProducts();
+        }
+
+        function filterByCategory(catId) {
+            document.getElementById('categoryFilter').value = catId;
+            filterProducts();
+        }
+
+        // RENDER SẢN PHẨM & THANH PHÂN TRANG
+        function renderProducts() {
+            const container = document.getElementById('productContainer');
+            const countText = document.getElementById('productCountText');
+            
+            // Tính toán vị trí cắt mảng cho Phân trang
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const pageItems = filteredProductsList.slice(startIndex, endIndex);
+
+            countText.innerText = `Hiển thị ${pageItems.length}/${filteredProductsList.length} sản phẩm`;
+
+            if (pageItems.length === 0) {
+                container.innerHTML = `<div class="col-span-full text-center py-8 text-slate-400 font-medium">Không tìm thấy sản phẩm nào!</div>`;
+                document.getElementById('pagination').innerHTML = '';
+                return;
+            }
+
+            container.innerHTML = pageItems.map(p => {
+                const cat = categories.find(c => c.id === p.catId);
+                return `
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-3 sm:p-4 flex flex-col justify-between hover:shadow-lg transition">
+                    <div>
+                        <img src="${p.img}" alt="${p.name}" class="h-36 sm:h-40 w-full object-cover rounded-lg mb-3">
+                        <span class="text-[10px] uppercase font-bold bg-blue-100 text-blue-700 px-2 py-0.5 rounded">${cat.name}</span>
+                        <h3 class="font-bold text-slate-800 text-sm sm:text-base mt-2 line-clamp-1">${p.name}</h3>
+                        <p class="text-xs text-slate-500 mt-1 line-clamp-2">${p.desc}</p>
+                    </div>
+                    <div class="mt-4 pt-2.5 border-t flex items-center justify-between">
+                        <span class="text-red-600 font-extrabold text-xs sm:text-sm">${p.price}</span>
+                        <button onclick="openModal(${p.id})" class="bg-blue-600 hover:bg-blue-700 text-white text-xs px-2.5 py-1.5 rounded-lg font-medium transition">
+                            Chi tiết
+                        </button>
+                    </div>
+                </div>
+            `}).join('');
+
+            renderPagination();
+        }
+
+        // RENDER NÚT PHÂN TRANG (PAGINATION)
+        function renderPagination() {
+            const paginationContainer = document.getElementById('pagination');
+            const totalPages = Math.ceil(filteredProductsList.length / itemsPerPage);
+
+            if (totalPages <= 1) {
+                paginationContainer.innerHTML = '';
+                return;
+            }
+
+            let html = '';
+            for (let i = 1; i <= totalPages; i++) {
+                const activeClass = (i === currentPage) ? 'bg-blue-600 text-white font-bold' : 'bg-white text-slate-700 border hover:bg-slate-100';
+                html += `<button onclick="goToPage(${i})" class="w-8 h-8 rounded-lg text-xs ${activeClass} shadow-sm transition">${i}</button>`;
+            }
+
+            paginationContainer.innerHTML = html;
+        }
+
+        function goToPage(page) {
+            currentPage = page;
+            renderProducts();
+        }
+
+        // MỞ POPUP CHI TIẾT SẢN PHẨM (MỤC 1)
+        function openModal(id) {
+            const p = products.find(item => item.id === id);
+            const cat = categories.find(c => c.id === p.catId);
+            const content = document.getElementById('modalContent');
+            content.innerHTML = `
+                <div>
+                    <img src="${p.img}" class="w-full h-48 sm:h-60 object-cover rounded-xl shadow">
+                </div>
+                <div class="flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-bold bg-blue-100 text-blue-700 px-2 py-1 rounded">${cat.name}</span>
+                        <h2 class="text-xl sm:text-2xl font-bold text-slate-800 mt-2">${p.name}</h2>
+                        <p class="text-xl font-extrabold text-red-600 mt-1">${p.price}</p>
+                        <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">${p.desc}</p>
+                        <div class="mt-3 p-2.5 bg-amber-50 border border-amber-200 rounded-lg text-xs text-amber-900">
+                            <strong><i class="fa-solid fa-circle-check mr-1"></i>Tối ưu SEO Product:</strong><br>
+                            <em>Title:</em> ${p.seoTitle}
+                        </div>
+                    </div>
+                    <button onclick="closeModal()" class="w-full mt-4 bg-slate-800 hover:bg-slate-900 text-white py-2 rounded-xl font-bold text-xs sm:text-sm">
+                        Đóng cửa sổ
+                    </button>
+                </div>
+            `;
+            document.getElementById('productModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').classList.add('hidden');
+        }
+
+        // CHUYỂN CLIENT <-> ADMIN VIEW
+        function switchView(view) {
+            if (view === 'admin') {
+                document.getElementById('clientView').classList.add('hidden');
+                document.getElementById('adminView').classList.remove('hidden');
+                initAdminSEOSelect();
+            } else {
+                document.getElementById('adminView').classList.add('hidden');
+                document.getElementById('clientView').classList.remove('hidden');
+            }
+        }
+
+        // TRANG ADMIN (MỤC 2)
+        function initAdminSEOSelect() {
+            const select = document.getElementById('seoProductSelect');
+            select.innerHTML = products.map(p => `<option value="${p.id}">${p.name}</option>`).join('');
+            loadProductSEO();
+        }
+
+        function loadProductSEO() {
+            const selectedId = parseInt(document.getElementById('seoProductSelect').value);
+            const p = products.find(item => item.id === selectedId);
+            if (p) {
+                document.getElementById('seoProductTitle').value = p.seoTitle;
+                document.getElementById('seoProductDesc').value = p.seoDesc;
+            }
+        }
+
+        // KHỞI CHẠY LẦN ĐẦU
+        renderCategories();
+        renderProducts();
+    </script>
+</body>
+</html>
